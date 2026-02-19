@@ -1,22 +1,66 @@
-class mahasiswa:
-    def __init__ ( self, nama, nim, jurusan, umur):
-        self.nama = nama
-        self.nim = nim
-        self.jurusan = jurusan
-        self.umur = umur   
 
-    def introduction (self):
-        print(f"my name is {self.nama}, and i am from {self.jurusan}, and i am {self.umur} years old")
+class GameObject:
+    def __init__ (self, symbol, row, col):
+        self.symbol = symbol
+        self.row = row
+        self.col = col
 
-    def umur_2031(self):
-        print(f"Umur {self.nama} pada tahun 2031 adalah {self.umur + 5}")
-
-student1 = mahasiswa("deva", 1234, "mechanical laba laba sunda", 20)
-student2 = mahasiswa("ujang", 3872, "mechanical", 19)
+    def printObject(self):
+        print(f"object {self.symbol} di {self.row} {self.col}")
 
 
-student1.introduction()
-student1.umur_2031()
 
-student2.introduction()
-student2.umur_2031()
+class Grid:
+    def __init__ (self, rows, cols):
+        self.rows = rows
+        self.cols = cols
+        self.board = []
+
+        for i in range(rows):
+
+            row = []
+            for j in range(cols):
+                row.append("-")
+            self.board.append(row)
+
+    def display (self):
+        for row in self.board:
+            print(" ". join(row))
+
+    def place_object(self, object):
+        if 0 <= object.row < self.rows and 0 <= object.col < self.cols:
+            self.board[object.row][object.col] = object.symbol
+        else:
+            print("Tidak dapat menaruh di luar arena")
+
+    def move_object(self, object, newRow, NewCol):
+        if 0 <= object.row < self.rows and 0 <= object.col < self.cols:
+            self.board[object.row][object.col] = "-"
+            self.board[newRow][NewCol] = object.symbol
+            print(f"simbol {object.symbol} Bergerak ke {newRow} {NewCol}")
+        else:
+            print("Tidak dapat bergerak ke luar arena")
+
+
+    
+
+grid = Grid(10, 10)
+
+Zilong = GameObject("Z", 1, 0)
+bannet = GameObject("B", 0, 9)
+Lanling = GameObject("L", 5, 1)
+Ens = GameObject("E", 3, 1)
+
+grid.place_object(Zilong)
+grid.place_object(bannet)
+grid.place_object(Lanling)
+grid.place_object(Ens)
+
+grid.move_object(Zilong, 5, 0)
+
+
+Grid.display(grid)
+Zilong.printObject()
+bannet.printObject()
+Lanling.printObject()
+Ens.printObject()
