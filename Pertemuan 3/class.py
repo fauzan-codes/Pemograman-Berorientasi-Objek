@@ -59,8 +59,8 @@ grid.place_object(Ens)
 grid.move_object(Zilong, 5, 0)
 
 
-Grid.display(grid)
 Zilong.printObject()
 bannet.printObject()
 Lanling.printObject()
 Ens.printObject()
+Grid.display(grid)
