@@ -20,7 +20,7 @@ class Player:
 
         self.width = 50
         self.height = 58
-
+ 
         self.speed = 2
 
         self.colored = colors[0]
