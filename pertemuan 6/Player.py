@@ -22,38 +22,34 @@ class Character:
         self.speed = 0.5
         self.color = color
 
-    # 2 usages
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
 
-    # 2 usages
     def get_rect(self):
-        return pygame. Rect(self.x, self.y, self.width, self.height)
+        return pygame.Rect(self.x, self.y, self.width, self.height)
 
 
 
 class Polisi(Character):
-    # 1 usage
     def move(self,keys):
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and self.x > 0:
             self.x -= self.speed
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and self.x < WIDTH - self.width:
                 self.x += self.speed
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] and self.y > 0:
             self.y -= self.speed
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] and self.y < HEIGHT - self.height:
             self.y += self.speed
 
 class Maling (Character):
-    # 1 usage
     def move(self,keys):
-        if keys[pygame.K_a]:
+        if keys[pygame.K_a] and self.x > 0:
             self.x -= self.speed
-        if keys[pygame.K_d]:
+        if keys[pygame.K_d] and self.x < WIDTH - self.width:
             self.x += self.speed
-        if keys[pygame.K_w]:
+        if keys[pygame.K_w] and self.y > 0:
             self.y -= self.speed
-        if keys[pygame.K_s]:
+        if keys[pygame.K_s] and self.y < HEIGHT - self.height:
             self.y += self.speed
 
 
@@ -68,21 +64,27 @@ while running:
         if event.type == pygame. QUIT:
             running = False
 
-keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed()
 
-polisi.move(keys)
-maling.move(keys)
+    polisi.move(keys)
+    maling.move(keys)
 
-if polisi.get_rect().colliderect(maling.get_rect()):
-    print("Polisi Menang!")
-    running = False
+    if polisi.get_rect().colliderect(maling.get_rect()):
+        print("Polisi Menang!")
+        running = False
 
-screen.fill(WHITE)
+    screen.fill(WHITE)
 
-polisi.draw(screen)
-maling.draw(screen)
 
-pygame.display. update()
+    # if game_over:
+    #     font = pygame.font.SysFont(None, 48)
+    #     text = font.render("POLISI MENANG", True, (0, 0, 0))
+    #     screen.blit(text, (200, 180))
+
+    polisi.draw(screen)
+    maling.draw(screen)
+
+    pygame.display.update()
 
 pygame.quit()
 sys.exit()
