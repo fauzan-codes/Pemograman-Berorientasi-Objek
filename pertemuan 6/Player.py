@@ -58,33 +58,41 @@ maling = Maling( 400, 200, RED)
 
 
 running = True
+game_over = False
 
 while running:
     for event in pygame.event.get():
-        if event.type == pygame. QUIT:
+        if event.type == pygame.QUIT:
             running = False
 
     keys = pygame.key.get_pressed()
 
-    polisi.move(keys)
-    maling.move(keys)
+    if not game_over:
+        polisi.move(keys)
+        maling.move(keys)
 
-    if polisi.get_rect().colliderect(maling.get_rect()):
-        print("Polisi Menang!")
-        running = False
 
     screen.fill(WHITE)
 
+    if polisi.get_rect().colliderect(maling.get_rect()):
+        # print("Polisi Menang!")
+        # running = False
+        game_over = True
 
-    # if game_over:
-    #     font = pygame.font.SysFont(None, 48)
-    #     text = font.render("POLISI MENANG", True, (0, 0, 0))
-    #     screen.blit(text, (200, 180))
+    if game_over:
+        font = pygame.font.SysFont(None, 48)
+        text = font.render("POLISI MENANG", True, (0, 0, 0))
+        screen.blit(text, (170, 180))
 
     polisi.draw(screen)
     maling.draw(screen)
 
     pygame.display.update()
+
+
+screen.fill((0, 0, 0))
+font = pygame.font.SysFont(None, 48)
+text = font.render("POLISI MENANG", True, (255, 255, 255))
 
 pygame.quit()
 sys.exit()
