@@ -38,7 +38,7 @@ public class MahasiswaInternasional extends Mahasiswa {
         } else if (nilai >= 60) {
             System.out.println("Remedial diperbolehkan");
         } else {
-            System.out.println("Harus mengulang");
+            System.out.println("Harus mengulang, diperbolehkan memperpanjang masa tinggal (kepulangan ditunda) ");
         }
 
         if (visaAktif) {
