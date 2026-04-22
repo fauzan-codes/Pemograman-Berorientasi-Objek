@@ -15,10 +15,13 @@ public class Main {
 
         System.out.print("Kelas: ");
         String kelas = input.nextLine();
-
+        
         System.out.print("Angkatan: ");
         int angkatan = input.nextInt();
         input.nextLine();
+        
+        System.out.print("Jurusan: ");
+        String jurusan = input.nextLine();
 
         System.out.print("Bahasa: ");
         String bahasa = input.nextLine();
@@ -32,11 +35,13 @@ public class Main {
         System.out.print("Visa aktif? (true/false): ");
         boolean visa = input.nextBoolean();
 
+
         MahasiswaInternasional mhs = new MahasiswaInternasional(
                 nama,
                 nim,
                 kelas,
                 angkatan,
+                jurusan,
                 bahasa,
                 negara,
                 nilai,

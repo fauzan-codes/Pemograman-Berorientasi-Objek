@@ -12,44 +12,34 @@ public class MahasiswaInternasional extends Mahasiswa {
             String nim,
             String kelas,
             int angkatan,
+            String jurusan,
+
             String bahasa,
             String negaraAsal,
             int nilai,
-            boolean visaAktif) {
+            boolean visaAktif
+        ) {
 
-        super(nama, nim, kelas, angkatan);
+        super(nama, nim, kelas, angkatan, jurusan);
 
+        this.nama = nama;
+        this.nim = nim;
+        this.kelas = kelas;
+        this.angkatan = angkatan;
+        this.jurusan = jurusan;
         this.bahasa = bahasa;
         this.negaraAsal = negaraAsal;
         this.nilai = nilai;
         this.visaAktif = visaAktif;
+        
+
+        System.out.println("Data sudah disimpan\n");
     }
 
-    public void tampilkanInformasi() {
-
-        super.tampilkanInformasi();
-
-        System.out.println("INFORMASI TAMBAHAN");
-        System.out.println("Bahasa : " + bahasa);
-        System.out.println("Negara : " + negaraAsal);
-        System.out.println("Nilai : " + nilai);
-
-        if (nilai >= 75) {
-            System.out.println("Mahasiswa LULUS");
-        } else if (nilai >= 60) {
-            System.out.println("Remedial diperbolehkan");
-        } else {
-            System.out.println("Harus mengulang, diperbolehkan memperpanjang masa tinggal (kepulangan ditunda) ");
-        }
-
-        if (visaAktif) {
-            System.out.println("Visa aktif, mahasiswa diizinkan tinggal");
-        } else {
-            System.out.println("Visa tidak aktif, segera perpanjang");
-        }
-
-        if (nilai < 60 && !visaAktif) {
-            System.out.println("PERINGATAN: Mahasiswa harus mengulang dan perpanjang visa!");
-        }
+    public void perkenalan() {
+        System.out.println("Nama: " + nama);
+        System.out.println("NIM: " + nim);
+        System.out.println("Kelas: " + kelas);
+        System.out.println("Jurusan: " + jurusan);
     }
 }
